@@ -1,0 +1,232 @@
+---
+interface FAQ {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  id: string;
+  title: string;
+  type: "iframe" | "locker" | "steps" | "agent";
+  iframeSrc?: string;
+  description?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  faqs?: FAQ[];
+  steps?: string[];
+  infoFields?: string[];
+  pricing?: { label: string; price: string; note?: string }[];
+  advantages?: string[];
+  termsPreview?: string;
+  agentIntro?: string;
+  agentList?: string[];
+}
+
+const {
+  id, title, type, iframeSrc, description, ctaText, ctaHref,
+  faqs = [], steps = [], infoFields = [], pricing = [],
+  advantages = [], termsPreview, agentIntro, agentList = [],
+} = Astro.props;
+---
+
+<div id={id} class="modal-overlay fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+  <div class="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-auto">
+    <!-- Header -->
+    <div class="flex items-center justify-between p-5 border-b sticky top-0 bg-white z-10">
+      <h3 class="font-montserrat font-bold text-lg text-dark">{title}</h3>
+      <button class="modal-close text-gray-400 hover:text-dark text-2xl font-bold leading-none">&times;</button>
+    </div>
+
+    <div class="p-6">
+      {/* IFRAME TYPE (Miami / Guangzhou cotizador) */}
+      {type === "iframe" && iframeSrc && (
+        <div>
+          <div class="w-full aspect-[4/3] rounded-xl overflow-hidden border mb-4">
+            <iframe src={iframeSrc} class="w-full h-full" title={title} loading="lazy"></iframe>
+          </div>
+          {ctaText && ctaHref && (
+            <a href={ctaHref} target="_blank" rel="noopener noreferrer"
+              class="block w-full bg-gold hover:bg-gold-light text-dark font-montserrat font-bold text-sm py-4 rounded-xl transition-colors uppercase text-center">
+              {ctaText}
+            </a>
+          )}
+        </div>
+      )}
+
+      {/* LOCKER TYPE (Casillero USA / China) */}
+      {type === "locker" && (
+        <div>
+          {description && <p class="text-gray-600 text-sm mb-6">{description}</p>}
+          {ctaText && ctaHref && (
+            <a href={ctaHref} target="_blank" rel="noopener noreferrer"
+              class="block w-full bg-gold hover:bg-gold-light text-dark font-montserrat font-bold text-sm py-4 rounded-xl transition-colors uppercase text-center mb-8">
+              {ctaText}
+            </a>
+          )}
+          {faqs.length > 0 && (
+            <div>
+              <h4 class="font-montserrat font-bold text-gold text-lg mb-4">Preguntas Frecuentes</h4>
+              <div class="space-y-2">
+                {faqs.map((faq) => (
+                  <div class="modal-faq-item border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="modal-faq-toggle w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-50 transition-colors">
+                      <span class="font-montserrat text-sm font-medium text-dark pr-4">{faq.q}</span>
+                      <span class="modal-faq-icon text-gold text-lg flex-shrink-0">+</span>
+                    </button>
+                    <div class="modal-faq-answer hidden px-4 pb-3">
+                      <p class="text-gray-500 text-sm leading-relaxed whitespace-pre-line">{faq.a}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* STEPS TYPE (USA → Venezuela) */}
+      {type === "steps" && (
+        <div>
+          <h4 class="font-montserrat font-black text-dark text-base uppercase mb-4">PASO A PASO ENVÍOS NACIONALES</h4>
+          <ol class="space-y-3 mb-8">
+            {steps.map((step, i) => (
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-gold text-dark font-bold text-xs flex items-center justify-center">{i + 1}</span>
+                <span class="text-gray-700 text-sm">{step}</span>
+              </li>
+            ))}
+          </ol>
+
+          {infoFields.length > 0 && (
+            <div class="mb-6">
+              <h4 class="font-montserrat font-bold text-dark text-sm uppercase mb-3">INFORMACIÓN IMPORTANTE</h4>
+              <ul class="space-y-1">
+                {infoFields.map((field) => (
+                  <li class="text-gray-600 text-sm flex items-start gap-2">
+                    <span class="text-gold mt-0.5">•</span>
+                    <span>{field}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {ctaText && ctaHref && (
+            <a href={ctaHref} target="_blank" rel="noopener noreferrer"
+              class="block w-full bg-green-whatsapp hover:opacity-90 text-white font-montserrat font-bold text-sm py-4 rounded-xl transition-opacity uppercase text-center mb-8">
+              📱 {ctaText}
+            </a>
+          )}
+
+          {faqs.length > 0 && (
+            <div>
+              <h4 class="font-montserrat font-bold text-gold text-lg mb-4">Preguntas Frecuentes</h4>
+              <div class="space-y-2">
+                {faqs.map((faq) => (
+                  <div class="modal-faq-item border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="modal-faq-toggle w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-50 transition-colors">
+                      <span class="font-montserrat text-sm font-medium text-dark pr-4">{faq.q}</span>
+                      <span class="modal-faq-icon text-gold text-lg flex-shrink-0">+</span>
+                    </button>
+                    <div class="modal-faq-answer hidden px-4 pb-3">
+                      <p class="text-gray-500 text-sm leading-relaxed whitespace-pre-line">{faq.a}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* AGENT TYPE (Agente USA / China) */}
+      {type === "agent" && (
+        <div>
+          {agentIntro && (
+            <div class="mb-6">
+              <h4 class="font-montserrat font-bold text-dark text-base mb-3">
+                {title.includes("China") ? "¿Qué es un Agente de Logística en CHINA?" : "¿CÓMO FUNCIONA?"}
+              </h4>
+              <p class="text-gray-600 text-sm leading-relaxed">{agentIntro}</p>
+            </div>
+          )}
+
+          {agentList.length > 0 && (
+            <ul class="space-y-1 mb-6">
+              {agentList.map((item) => (
+                <li class="text-gray-600 text-sm flex items-start gap-2">
+                  <span class="text-gold mt-0.5">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {advantages.length > 0 && (
+            <div class="mb-6">
+              <h4 class="font-montserrat font-bold text-dark text-sm mb-3">Ventajas</h4>
+              <ul class="space-y-2">
+                {advantages.map((adv) => (
+                  <li class="text-gray-600 text-sm flex items-start gap-2">
+                    <span class="text-green-500">✓</span>
+                    <span>{adv}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {pricing.length > 0 && (
+            <div class="mb-6">
+              <h4 class="font-montserrat font-bold text-dark text-sm mb-3">Costo del Servicio</h4>
+              <div class="border rounded-xl overflow-hidden">
+                {pricing.map((p, i) => (
+                  <div class:list={["flex items-center justify-between px-4 py-3", i > 0 ? "border-t" : ""]}>
+                    <div>
+                      <span class="text-dark text-sm font-medium">{p.label}</span>
+                      {p.note && <span class="block text-gray-400 text-xs">{p.note}</span>}
+                    </div>
+                    <span class="text-gold font-bold text-sm">{p.price}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {termsPreview && (
+            <div class="mb-6 bg-gray-50 rounded-xl p-4">
+              <h4 class="font-montserrat font-bold text-dark text-xs mb-2">Términos y Condiciones</h4>
+              <p class="text-gray-500 text-xs leading-relaxed">{termsPreview}</p>
+            </div>
+          )}
+
+          {ctaText && ctaHref && (
+            <a href={ctaHref} target="_blank" rel="noopener noreferrer"
+              class="block w-full bg-gold hover:bg-gold-light text-dark font-montserrat font-bold text-sm py-4 rounded-xl transition-colors uppercase text-center mb-8">
+              {ctaText}
+            </a>
+          )}
+
+          {faqs.length > 0 && (
+            <div>
+              <h4 class="font-montserrat font-bold text-gold text-lg mb-4">Preguntas Frecuentes</h4>
+              <div class="space-y-2">
+                {faqs.map((faq) => (
+                  <div class="modal-faq-item border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="modal-faq-toggle w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-50 transition-colors">
+                      <span class="font-montserrat text-sm font-medium text-dark pr-4">{faq.q}</span>
+                      <span class="modal-faq-icon text-gold text-lg flex-shrink-0">+</span>
+                    </button>
+                    <div class="modal-faq-answer hidden px-4 pb-3">
+                      <p class="text-gray-500 text-sm leading-relaxed whitespace-pre-line">{faq.a}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</div>

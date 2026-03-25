@@ -1,0 +1,133 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Aprende a importar – ON THE WAY LOGISTIC">
+  <Header currentPath="/aprende-a-importar" lang="es" />
+  <div class="h-[104px]"></div>
+
+  <!-- Hero Section -->
+  <section style="background: linear-gradient(180deg, #000000 0%, #0060C0 100%);" class="py-20 md:py-28 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="font-montserrat font-black text-4xl md:text-6xl lg:text-7xl text-white uppercase leading-none mb-2">
+        MOVEMOS TUS CAJAS
+      </h1>
+      <h2 class="font-montserrat font-black text-4xl md:text-6xl lg:text-7xl text-gold uppercase leading-none mb-8">
+        RAPIDO Y SEGURO.
+      </h2>
+      <p class="text-gray-light text-sm md:text-base max-w-3xl leading-relaxed mb-6">
+        En ON THE WAY LOGISTIC hacemos que tus envios dentro de Estados Unidos sean mas faciles que nunca. Gracias a nuestra alianza con UPS, ofrecemos tarifas exclusivas, entregas puerta a puerta y seguimiento en todo momento.
+      </p>
+      <p class="text-gold font-montserrat font-semibold text-base md:text-lg mb-6">
+        Cotiza tu envio ahora.
+      </p>
+      <a
+        href="https://api.whatsapp.com/send?phone=17862822830"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-gold hover:bg-gold-light text-dark font-montserrat font-black text-base md:text-lg py-4 px-10 rounded-xl border-4 border-gold/80 transition-colors uppercase"
+      >
+        CONTACTANOS
+      </a>
+      <p class="text-gray-light text-sm md:text-base max-w-3xl leading-relaxed mt-8">
+        Gracias a nuestra alianza con UPS, accedes a precios preferenciales y entregas puerta a puerta. Solo completa el formulario con el origen, destino, peso y medidas de tus cajas, y cotiza en cuestion de minutos.
+      </p>
+    </div>
+  </section>
+
+  <!-- How Do Our Rates Work -->
+  <section class="py-16 px-4 bg-dark">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-montserrat font-black text-3xl md:text-4xl lg:text-5xl">
+          <span class="text-gold">&iquest;COMO FUNCIONA</span>
+        </h2>
+        <h2 class="font-montserrat font-black text-3xl md:text-4xl lg:text-5xl">
+          <span class="text-white">NUESTRAS TARIFAS?</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[1, 2, 3, 4].map((i) => (
+          <div class="bg-dark-surface border border-gray-border rounded-2xl p-6 hover:border-gold/50 transition-colors">
+            <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mb-4">
+              <span class="text-gold font-montserrat font-black text-lg">{i}</span>
+            </div>
+            <h3 class="font-montserrat font-bold text-gold text-sm mb-2">Cotizacion inmediata</h3>
+            <p class="text-gray-light text-sm leading-relaxed">
+              Solo ingresa el origen, destino, medidas (Largo, Ancho, Alto) y el peso de tu caja en libras.
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- National Shipping Form -->
+  <section style="background: linear-gradient(180deg, #000000 0%, #0060C0 100%);" class="py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-montserrat font-black text-3xl md:text-4xl lg:text-5xl text-white uppercase leading-tight mb-2">
+        HACEMOS TUS ENVIOS POR DENTRO DE USA
+      </h2>
+      <h2 class="font-montserrat font-black text-3xl md:text-4xl lg:text-5xl text-gold uppercase leading-tight mb-8">
+        AL MEJOR PRECIO
+      </h2>
+      <div class="bg-dark-surface border border-gray-border rounded-2xl p-6 md:p-8">
+        <h3 class="font-montserrat font-bold text-gold text-xl md:text-2xl mb-2 uppercase">ENVIOS NACIONALES</h3>
+        <p class="text-gray-light text-sm mb-6">Cotizacion - Envios Nacionales USA</p>
+        <div class="w-full rounded-xl overflow-hidden">
+          <iframe
+            src="https://lnk.superleads.io/widget/form/zhsVjunLtIgQlbXHlmBB"
+            style="width:100%; height:600px; border:none; border-radius:12px;"
+            id="inline-zhsVjunLtIgQlbXHlmBB"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            title="Cotizacion Envios Nacionales"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon / Video Section -->
+  <section class="py-16 px-4 bg-dark">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="aspect-video bg-dark-surface border border-gray-border rounded-2xl flex items-center justify-center">
+          <div class="text-center p-8">
+            <svg class="w-16 h-16 mx-auto mb-4 text-primary/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p class="text-gold font-montserrat font-bold text-lg">Coming Soon</p>
+            <p class="text-gray-light text-sm mt-1">Video contenido proximamente</p>
+          </div>
+        </div>
+        <div class="aspect-video bg-dark-surface border border-gray-border rounded-2xl flex items-center justify-center">
+          <div class="text-center p-8">
+            <svg class="w-16 h-16 mx-auto mb-4 text-primary/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p class="text-gold font-montserrat font-bold text-lg">Coming Soon</p>
+            <p class="text-gray-light text-sm mt-1">Video contenido proximamente</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer lang="es" />
+</Layout>
+
+<script>
+  // SuperLeads form script loader
+  (function() {
+    const script = document.createElement('script');
+    script.src = 'https://lnk.superleads.io/js/form_embed.js';
+    document.body.appendChild(script);
+  })();
+</script>

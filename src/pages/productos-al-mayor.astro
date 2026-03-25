@@ -1,0 +1,227 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const categories = [
+  { name: "Electrónica", href: "#electronica", size: "large" },
+  { name: "Ropa", href: "#ropa", size: "small" },
+  { name: "Skincare", href: "#skincare", size: "small" },
+  { name: "Salud y bienestar", href: "#salud", size: "small" },
+  { name: "Maquillaje", href: "#maquillaje", size: "small" },
+  { name: "Perfumes", href: "#perfumes", size: "large" },
+  { name: "Carteras", href: "#carteras", size: "medium" },
+];
+
+const marqueeItems = [
+  "Envíos gratis a toda USA en compras mayores a $1000",
+  "Compras al mayor desde $397 por categoría",
+  "Envíos gratis en todo Miami",
+  "Productos en tendencia",
+];
+
+const WP = "https://onthewaylogistic.com/wp-content/uploads/2025/09";
+
+const products = {
+  newest: [
+    { name: "ON THE BOX – Mix Carteras y Monederos Dama (16 piezas)", price: "$393.00", image: `${WP}/CARTERAS-1-scaled.jpg` },
+    { name: "ON THE BOX – Skincare Americano (70 piezas + 2 FREE)", price: "$396.00", image: `${WP}/IMG_6723-1-scaled.jpg` },
+    { name: "ON THE BOX – Mix Maquillaje (133+2 Items FREE)", price: "", image: `${WP}/CAJA-1--scaled.jpg` },
+    { name: "ON THE BOX – Trajes de Baño Dama (200 piezas)", price: "", image: `${WP}/SHEIN-TB.jpeg` },
+  ],
+  bestselling: [
+    { name: "ON THE BOX – Mix Carteras y Monederos Dama (16 piezas)", price: "$393.00", image: `${WP}/CARTERAS-1-scaled.jpg` },
+    { name: "ON THE BOX – Skincare Americano (70 piezas + 2 FREE)", price: "$396.00", image: `${WP}/IMG_6723-1-scaled.jpg` },
+    { name: "ON THE BOX – Paca SHEIN Dama Boutique (200 piezas)", price: "", image: `${WP}/SHEIN-PACA-M.jpg` },
+    { name: "ON THE BOX – Trajes de Baño Dama (200 piezas)", price: "", image: `${WP}/SHEIN-TB.jpeg` },
+  ],
+  onSale: [
+    { name: "ON THE BOX – Perfumes Árabes para Caballero (20 piezas)", price: "$397.00", originalPrice: "$500.00", image: `${WP}/IMG_5847-scaled.jpg` },
+    { name: "ON THE BOX – Perfumes Árabes para Dama (20 piezas)", price: "$397.00", originalPrice: "$500.00", image: `${WP}/IMG_5847-scaled.jpg` },
+    { name: "ON THE BOX – Perfumes Árabes Mix (20 piezas)", price: "$397.00", originalPrice: "$500.00", image: `${WP}/IMG_5847-scaled.jpg` },
+  ],
+};
+---
+
+<Layout title="Productos al mayor – ON THE WAY LOGISTIC">
+  <Header currentPath="/productos-al-mayor" lang="es" />
+
+  <!-- Spacer for fixed header -->
+  <div class="h-[104px]"></div>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-dark/20 via-dark/40 to-dark z-10"></div>
+    <!-- Replace with actual hero image of warehouse/truck -->
+    <div class="absolute inset-0 bg-gray-800">
+      <div class="w-full h-full bg-gradient-to-br from-primary-dark/40 to-dark/80"></div>
+    </div>
+    <div class="relative z-20 text-center px-4">
+      <h1 class="font-montserrat font-black text-3xl md:text-5xl lg:text-6xl text-white uppercase leading-tight">
+        EL ÉXITO DE TU<br />NEGOCIO YA ESTÁ<br />EN CAMINO
+      </h1>
+      <a
+        href="#lo-mas-nuevo"
+        class="inline-block mt-8 px-8 py-3 bg-white text-dark font-montserrat font-bold text-sm rounded hover:bg-gray-100 transition-colors"
+      >
+        Comprar ahora
+      </a>
+    </div>
+  </section>
+
+  <!-- Marquee Banner -->
+  <div class="bg-dark border-y border-gray-border py-3 overflow-hidden">
+    <div class="marquee-track flex gap-12 text-base font-montserrat font-medium text-white whitespace-nowrap">
+      {[...marqueeItems, ...marqueeItems].map((item) => (
+        <span class="flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-primary"></span>
+          {item}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Categories Grid -->
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {categories.map((cat) => (
+          <a
+            href={cat.href}
+            class:list={[
+              "group relative rounded-2xl overflow-hidden border border-gray-border hover:border-primary/30 transition-all",
+              cat.size === "large" ? "col-span-2 md:col-span-1 row-span-2 min-h-[280px]" : "min-h-[140px]",
+              cat.size === "medium" ? "col-span-2 md:col-span-1 min-h-[180px]" : "",
+            ]}
+          >
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-primary-dark/20 group-hover:bg-primary-dark/30 transition-colors"></div>
+            <div class="relative z-20 h-full flex flex-col justify-end p-4">
+              <h2 class="font-montserrat font-bold text-xl md:text-2xl text-white">{cat.name}</h2>
+              <span class="text-primary text-xs font-montserrat mt-1 group-hover:underline">Comprar</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <section class="px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex gap-2 max-w-md">
+        <input
+          type="search"
+          placeholder="Buscar"
+          class="flex-1 bg-dark-surface border border-gray-border rounded-lg px-4 py-2 text-white text-base placeholder-gray-medium focus:border-primary focus:outline-none transition-colors"
+        />
+        <button class="bg-primary text-dark px-4 py-2 rounded-lg font-montserrat font-bold text-base hover:bg-primary/90 transition-colors">
+          Buscar
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lo más nuevo -->
+  <section class="py-12 px-4" id="lo-mas-nuevo">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="font-montserrat font-bold text-2xl md:text-3xl text-white">Lo más nuevo</h2>
+        <a href="#" class="text-primary text-sm font-montserrat hover:underline italic">Ver más</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {products.newest.map((product) => (
+          <div class="bg-dark-surface border border-gray-border rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+            <div class="aspect-square bg-white flex items-center justify-center p-4">
+              <img src={product.image} alt={product.name} class="w-full h-full object-cover rounded" loading="lazy" />
+            </div>
+            <div class="p-3">
+              <h3 class="font-montserrat text-sm font-medium text-white line-clamp-2 mb-2">{product.name}</h3>
+              {product.price && (
+                <p class="text-primary font-bold text-base md:text-lg">{product.price}</p>
+              )}
+              <button class="mt-2 w-full bg-primary/10 text-primary border border-primary/20 rounded-lg py-1.5 text-sm font-montserrat font-medium hover:bg-primary/20 transition-colors">
+                {product.price ? "Añadir al carrito" : "Leer más"}
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lo más vendido -->
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="font-montserrat font-bold text-2xl md:text-3xl text-white">Lo más vendido</h2>
+        <a href="#" class="text-primary text-sm font-montserrat hover:underline italic">Ver más</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {products.bestselling.map((product) => (
+          <div class="bg-dark-surface border border-gray-border rounded-xl overflow-hidden group hover:border-primary/30 transition-colors">
+            <div class="aspect-square bg-white flex items-center justify-center p-4">
+              <img src={product.image} alt={product.name} class="w-full h-full object-cover rounded" loading="lazy" />
+            </div>
+            <div class="p-3">
+              <h3 class="font-montserrat text-sm font-medium text-white line-clamp-2 mb-2">{product.name}</h3>
+              {product.price && (
+                <p class="text-primary font-bold text-base md:text-lg">{product.price}</p>
+              )}
+              <button class="mt-2 w-full bg-primary/10 text-primary border border-primary/20 rounded-lg py-1.5 text-sm font-montserrat font-medium hover:bg-primary/20 transition-colors">
+                {product.price ? "Añadir al carrito" : "Leer más"}
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Productos en oferta -->
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="font-montserrat font-bold text-2xl md:text-3xl text-white">Productos en oferta</h2>
+        <a href="#" class="text-primary text-sm font-montserrat hover:underline italic">Ver más</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {products.onSale.map((product) => (
+          <div class="bg-dark-surface border border-gray-border rounded-xl overflow-hidden group hover:border-primary/30 transition-colors relative">
+            <span class="absolute top-2 left-2 z-10 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">
+              Oferta
+            </span>
+            <div class="aspect-square bg-white flex items-center justify-center p-4">
+              <img src={product.image} alt={product.name} class="w-full h-full object-cover rounded" loading="lazy" />
+            </div>
+            <div class="p-3">
+              <h3 class="font-montserrat text-sm font-medium text-white line-clamp-2 mb-2">{product.name}</h3>
+              <div class="flex items-center gap-2">
+                {product.originalPrice && (
+                  <span class="text-gray-medium line-through text-xs">{product.originalPrice}</span>
+                )}
+                <span class="text-primary font-bold text-base md:text-lg">{product.price}</span>
+              </div>
+              <button class="mt-2 w-full bg-primary/10 text-primary border border-primary/20 rounded-lg py-1.5 text-sm font-montserrat font-medium hover:bg-primary/20 transition-colors">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer lang="es" />
+</Layout>
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-track {
+    animation: marquee 20s linear infinite;
+  }
+</style>

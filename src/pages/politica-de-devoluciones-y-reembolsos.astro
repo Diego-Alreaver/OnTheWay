@@ -1,0 +1,141 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getLocalizedPath } from "../i18n/translations";
+
+const lang = "es";
+---
+
+<Layout title="Politica de Devoluciones y Reembolsos - ON THE WAY LOGISTIC">
+  <Header currentPath="/politica-de-devoluciones-y-reembolsos" lang={lang} />
+
+  <!-- Spacer for fixed header -->
+  <div class="h-[104px] lg:h-[104px]"></div>
+
+  <main class="py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Back Button -->
+      <a href={getLocalizedPath("/soporte", lang)} class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-montserrat text-sm font-medium bg-dark-surface border border-gray-border rounded-full px-5 py-2 mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Volver a Soporte
+      </a>
+
+      <!-- Title -->
+      <h1 class="font-montserrat font-bold text-3xl md:text-4xl text-primary mb-2">
+        Politica de Devoluciones y Reembolsos
+      </h1>
+      <p class="text-gray-medium text-sm mb-10">ON THE WAY LOGISTIC INC</p>
+
+      <!-- Content -->
+      <div class="space-y-10">
+
+        <!-- Section 1 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            1. Alcance
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            ON THE WAY LOGISTIC INC actua como intermediario logistico internacional. No somos fabricantes ni vendedores directos de los productos que transportamos. Nuestro servicio se limita a la gestion logistica, asesoria de importacion y coordinacion de envios internacionales.
+          </p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            2. Devoluciones
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            Solo se aceptan devoluciones cuando el error sea atribuible directamente a ON THE WAY LOGISTIC INC (por ejemplo, envio de producto equivocado o dano durante la manipulacion en nuestro almacen). Los defectos de fabrica o problemas de calidad del producto son responsabilidad exclusiva del fabricante o proveedor.
+          </p>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            3. Reembolsos
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            Los reembolsos se otorgan en forma de credito para futuros servicios con ON THE WAY LOGISTIC INC. Los reembolsos monetarios solo se realizan cuando el error es 100% atribuible a la empresa y sera evaluado caso por caso.
+          </p>
+        </section>
+
+        <!-- Section 4 - Important Note -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            4. Nota Importante
+          </h2>
+          <div class="bg-dark-surface border border-gold/30 rounded-xl p-6">
+            <p class="text-gray-light text-sm leading-relaxed">
+              ON THE WAY LOGISTIC INC <span class="text-gold font-semibold">no se hace responsable</span> por:
+            </p>
+            <ul class="mt-4 space-y-2 text-gray-light text-sm leading-relaxed">
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-0.5">&#8226;</span>
+                Retrasos en transito por parte de las lineas navieras o aereas
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-0.5">&#8226;</span>
+                Retenciones aduanales
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-0.5">&#8226;</span>
+                Impuestos o aranceles aplicados por las autoridades del pais de destino
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-0.5">&#8226;</span>
+                Confiscaciones de mercancia
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-0.5">&#8226;</span>
+                Desastres naturales o eventos de fuerza mayor
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            5. Reclamos
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed mb-4">
+            Todo reclamo debe ser presentado por escrito a <a href="mailto:support@onthewaylogistic.com" class="text-primary hover:underline">support@onthewaylogistic.com</a> dentro de los <span class="text-white font-semibold">5 dias habiles</span> posteriores a la recepcion de la mercancia.
+          </p>
+          <p class="text-gray-light text-sm leading-relaxed mb-4">
+            El reclamo debe incluir:
+          </p>
+          <ul class="space-y-2 text-gray-light text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Numero de orden
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Facturas correspondientes
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Evidencia fotografica o documental del problema
+            </li>
+          </ul>
+        </section>
+
+        <!-- Contact -->
+        <section class="bg-dark-surface border border-gray-border rounded-2xl p-8 text-center">
+          <h2 class="font-montserrat font-bold text-lg text-primary mb-2">Contacto</h2>
+          <p class="text-gray-light text-sm mb-4">Para reclamos o consultas sobre devoluciones:</p>
+          <a href="mailto:support@onthewaylogistic.com" class="text-primary hover:underline text-sm font-montserrat font-medium">
+            support@onthewaylogistic.com
+          </a>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

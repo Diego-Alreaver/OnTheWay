@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+
+  --color-primary: #0060C0;
+  --color-primary-light: #4FACFE;
+  --color-primary-dark: #0A2D5F;
+  --color-navy: #3F5F8D;
+  --color-navy-deep: #00356A;
+  --color-gold: #F3AD3D;
+  --color-gold-light: #F8C860;
+  --color-dark: #000000;
+  --color-dark-card: #0d1117;
+  --color-dark-surface: #111827;
+  --color-gray-border: #1e293b;
+  --color-green-whatsapp: #34AB2C;
+  --color-white: #FFFFFF;
+  --color-gray-light: #C5C5C5;
+  --color-gray-medium: #54595F;
+  --color-secondary: #54595F;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-montserrat);
+    background-color: var(--color-dark);
+    color: var(--color-white);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat);
+  }
+}

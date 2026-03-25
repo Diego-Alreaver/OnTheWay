@@ -1,0 +1,159 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getLocalizedPath } from "../i18n/translations";
+
+const lang = "es";
+---
+
+<Layout title="Politica de Privacidad - ON THE WAY LOGISTIC">
+  <Header currentPath="/politica-de-privacidad" lang={lang} />
+
+  <!-- Spacer for fixed header -->
+  <div class="h-[104px] lg:h-[104px]"></div>
+
+  <main class="py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Back Button -->
+      <a href={getLocalizedPath("/soporte", lang)} class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-montserrat text-sm font-medium bg-dark-surface border border-gray-border rounded-full px-5 py-2 mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Volver a Soporte
+      </a>
+
+      <!-- Title -->
+      <h1 class="font-montserrat font-bold text-3xl md:text-4xl text-primary mb-2">
+        Politica de Privacidad
+      </h1>
+      <p class="text-gray-medium text-sm mb-10">ON THE WAY LOGISTIC INC</p>
+
+      <!-- Content -->
+      <div class="space-y-10">
+
+        <!-- Section 1 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            1. Recoleccion de Informacion
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed mb-4">
+            Recopilamos informacion personal necesaria para la prestacion de nuestros servicios logisticos, incluyendo:
+          </p>
+          <ul class="space-y-2 text-gray-light text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Nombre completo
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Direccion fisica
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Correo electronico
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Numero de telefono
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Informacion de facturacion
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Detalles de envio
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            2. Uso de la Informacion
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed mb-4">
+            La informacion recopilada se utiliza para los siguientes fines:
+          </p>
+          <ul class="space-y-2 text-gray-light text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Procesar ordenes y gestionar la logistica de envios
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Emitir facturas y documentos fiscales
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Realizar seguimiento de envios
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Comunicar promociones y actualizaciones de servicio
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            3. Confidencialidad
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed mb-4">
+            En ON THE WAY LOGISTIC INC nos comprometemos a no vender ni compartir tu informacion personal con terceros, salvo en los siguientes casos:
+          </p>
+          <ul class="space-y-2 text-gray-light text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Autoridades legales que lo requieran por mandato judicial
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Agentes aduanales y operadores logisticos necesarios para la prestacion del servicio
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            4. Seguridad
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            Implementamos medidas tecnicas y administrativas para proteger tu informacion personal contra acceso no autorizado, alteracion, divulgacion o destruccion. Mantenemos protocolos de seguridad actualizados para garantizar la integridad de tus datos.
+          </p>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            5. Derechos del Usuario
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            Como usuario, tienes derecho a solicitar el acceso, correccion o eliminacion de tu informacion personal en cualquier momento. Para ejercer estos derechos, puedes comunicarte con nosotros a traves de:
+          </p>
+          <p class="mt-4">
+            <a href="mailto:info@onthewaylogistic.com" class="text-primary hover:underline text-sm font-montserrat font-medium">
+              info@onthewaylogistic.com
+            </a>
+          </p>
+        </section>
+
+        <!-- Contact -->
+        <section class="bg-dark-surface border border-gray-border rounded-2xl p-8 text-center">
+          <h2 class="font-montserrat font-bold text-lg text-primary mb-2">Contacto</h2>
+          <p class="text-gray-light text-sm mb-4">Si tienes preguntas sobre nuestra politica de privacidad, contactanos:</p>
+          <a href="mailto:info@onthewaylogistic.com" class="text-primary hover:underline text-sm font-montserrat font-medium">
+            info@onthewaylogistic.com
+          </a>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

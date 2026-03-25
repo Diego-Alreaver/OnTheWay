@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getLocalizedPath } from "../i18n/translations";
+
+const lang = "es";
+---
+
+<Layout title="Aviso Legal - ON THE WAY LOGISTIC">
+  <Header currentPath="/aviso-legal" lang={lang} />
+
+  <!-- Spacer for fixed header -->
+  <div class="h-[104px] lg:h-[104px]"></div>
+
+  <main class="py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Back Button -->
+      <a href={getLocalizedPath("/soporte", lang)} class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-montserrat text-sm font-medium bg-dark-surface border border-gray-border rounded-full px-5 py-2 mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Volver a Soporte
+      </a>
+
+      <!-- Title -->
+      <h1 class="font-montserrat font-bold text-3xl md:text-4xl text-primary mb-2">
+        Aviso Legal
+      </h1>
+      <p class="text-gray-medium text-sm mb-10">ON THE WAY LOGISTIC INC</p>
+
+      <!-- Content -->
+      <div class="space-y-10">
+
+        <!-- Jurisdiction -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            Jurisdiccion y Legislacion Aplicable
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            ON THE WAY LOGISTIC INC opera bajo las leyes de los Estados Unidos de America, con sede en <span class="text-white font-semibold">Miami, Florida</span>. Todas las operaciones, contratos y servicios estan sujetos a la legislacion federal y estatal aplicable.
+          </p>
+        </section>
+
+        <!-- Dispute Resolution -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            Resolucion de Disputas
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            Cualquier controversia, disputa o reclamo derivado de o relacionado con los servicios prestados por ON THE WAY LOGISTIC INC sera resuelto bajo la ley del estado de Florida y la jurisdiccion de sus tribunales competentes.
+          </p>
+        </section>
+
+        <!-- Liability -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            Limitacion de Responsabilidad
+          </h2>
+          <div class="bg-dark-surface border border-gold/30 rounded-xl p-6">
+            <p class="text-gray-light text-sm leading-relaxed">
+              La responsabilidad total de ON THE WAY LOGISTIC INC no excedera, en ningun caso, el monto de las <span class="text-gold font-semibold">tarifas pagadas por el cliente</span> por el servicio en cuestion. Esta limitacion aplica a cualquier tipo de dano, ya sea directo, indirecto, incidental o consecuente.
+            </p>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="bg-dark-surface border border-gray-border rounded-2xl p-8 text-center">
+          <h2 class="font-montserrat font-bold text-lg text-primary mb-2">Contacto</h2>
+          <p class="text-gray-light text-sm mb-4">Para consultas legales:</p>
+          <a href="mailto:info@onthewaylogistic.com" class="text-primary hover:underline text-sm font-montserrat font-medium">
+            info@onthewaylogistic.com
+          </a>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

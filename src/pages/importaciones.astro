@@ -1,0 +1,395 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ImportModal from "../components/ImportModal.astro";
+
+const usaOptions = [
+  { label: "¿Deseas cotizar desde nuestra sede de Miami hacia tu ciudad?", modalId: "miami-modal" },
+  { label: "¿Deseas crearte un casillero en Estados Unidos?", modalId: "usa-locker-modal" },
+  { label: "¿Deseas enviar desde cualquier ciudad de USA a Venezuela?", modalId: "usa-venezuela-modal" },
+  { label: "¿Deseas un agente de compras?", modalId: "usa-agent-modal" },
+];
+
+const chinaOptions = [
+  { label: "¿Deseas cotizar desde nuestra sede de Guangzhou hacia tu ciudad?", modalId: "guangzhou-modal" },
+  { label: "¿Deseas crearte un casillero en China?", modalId: "china-locker-modal" },
+  { label: "¿Deseas un agente de compras?", modalId: "china-agent-modal" },
+];
+
+const reviews = [
+  { name: "Laura Estefania Marin Paiva", text: "Hola soy Laura y resido en Barcelona, Edo. Anzoátegui, dirijo una tienda online de maquillaje, accesorios y fragancias. Hace más de dos años, decidí dar el primer paso..." },
+  { name: "Gabriel De Garate", text: "Responsables y profesionales!! Recomendados 100%" },
+  { name: "Laura Rivas", text: "Es increíble verlos crecer, su compromiso va más allá de entregar un paquete. Note la dedicación para brindar soluciones rápidas y seguras. Siempre están a nuestro lado, siempre están en camino❤️" },
+  { name: "Jesus Hernandez", text: "Siempre presto en darte soluciones. La atención es de primera mano y su logística funciona a la perfección." },
+  { name: "Josnelxis Herrrera", text: "Excelente atención, buen reempaque, excelente su contenido, los defino como Los Mejores 🫶✌🏻" },
+  { name: "mariand figueroa", text: "Cuando me preguntan con qué empresa puedo enviar? Sin duda les recomiendo On The Way, tengo más de 2 años enviando con ellos y son un 1000/10 súper responsables..." },
+  { name: "Valeria Chacin", text: "Excelente compañía para hacer tus envíos o si buscas emprender, son súper atentos en todo momento..." },
+  { name: "Frande Blanco", text: "Excelente agencia de envíos, sus envíos llegan súper rápido y seguro 100% recomendado" },
+  { name: "Alejandra Rondon", text: "Tengo mi casillero en on the way hace aproximadamente 6 meses y he quedado encantada con su atención..." },
+  { name: "RIcardo Delgado", text: "Prestan un servicio de calidad, siempre dispuestos a aclarar dudas, dar sugerencias y guiarte..." },
+];
+
+const faqs = [
+  { question: "¿Qué puedo importar desde China con ustedes?", answer: "Puedes importar maquillaje, skincare, electrónicos, ropa por pacas, accesorios, productos virales y más. Te guiamos en todo el proceso." },
+  { question: "¿Puedo comenzar sin tener experiencia en importaciones?", answer: "¡Sí! Te ayudamos paso a paso. No necesitas ser experto ni tener empresa formal." },
+  { question: "¿Cuál es el pedido mínimo para importar desde China?", answer: "Depende del proveedor y el producto, pero puedes comenzar desde $300–$500 en algunos casos." },
+  { question: "¿Cómo es el proceso de inspección de calidad?", answer: "Contamos con una persona en China que revisa tus productos antes del envío, toma fotos, videos y verifica que todo esté correcto." },
+  { question: "¿Puedo pagar a proveedores chinos con ayuda de ustedes?", answer: "Sí. Ofrecemos servicio de pago intermedio si no tienes cómo pagar directamente." },
+  { question: "¿Qué pasa si mi paquete se pierde?", answer: "Nuestros envíos tienen seguimiento y cobertura. Te damos respaldo y solución inmediata si hay algún problema." },
+  { question: "¿Cómo hago el seguimiento de mi compra?", answer: "Te mantenemos informado por correo, con fotos, tracking y actualizaciones en cada etapa." },
+  { question: "¿Tienen asesoría personalizada?", answer: "Sí. Puedes agendar una asesoría 1 a 1 para resolver dudas específicas y planificar tu negocio." },
+  { question: "¿Es obligatorio que tenga que registrarme?", answer: "Es lo mejor sino te quieres perder ninguna promoción, descuentos o saber cuando llega mercancía nueva." },
+];
+
+const usaLockerFaqs = [
+  { q: "¿Puedo recibir desde cualquier plataforma?", a: "Sí, desde la que desees, como por ejemplo: Shein, Temu, AliExpress, Amazon, Walmart, eBay, Nike, Adidas, Farmasi, Gymshark, Alo, ¡y muchas más!" },
+  { q: "¿El casillero tiene algún costo?", a: "No. Es totalmente gratuito, podemos recibir lo que desees." },
+  { q: "¿Hacen reempaques?", a: "Sí, es totalmente gratuito. Nos encanta organizar para que ahorres un montón en tus envíos." },
+  { q: "¿Cuánto tiempo pueden estar los paquetes en casillero?", a: "Los paquetes NO pueden estar más de 3 semanas. (Se aplicará penalización)" },
+  { q: "¿Qué día salen los envíos?", a: "Salimos todas las semanas los días viernes." },
+  { q: "¿Cuánto es el tiempo de tránsito?", a: "Para ciudades principales como Barcelona y Caracas 2-4 días hábiles y para ciudades foráneas 5-7 días hábiles." },
+  { q: "¿Con cuáles métodos de pago cuentan?", a: "• USDT - BINANCE\n• Zelle\n• $ Panamá\n• $ efectivo (Solo válido en Barcelona)" },
+  { q: "¿Cuáles son los artículos prohibidos?", a: "• Drones\n• Vapes\n• Armas (así sean de juguete)\n• Efectivo\n• Artículos copia\n• Radioactivos\n• Alimentos perecederos\n• Animales" },
+];
+
+const chinaLockerFaqs = [
+  { q: "¿Puedo recibir desde cualquier proveedor o plataforma?", a: "Sí, desde la que desees, como por ejemplo: Alibaba, 1688, Made in China, Taobao, Wow Yiwu, Tu Trader, ¡etc!" },
+  { q: "¿El casillero tiene algún costo?", a: "No. Es totalmente gratuito, podemos recibir lo que desees." },
+  { q: "¿Hacen reempaques?", a: "Sí, es totalmente gratuito. Nos encanta organizar para que ahorres un montón en tus envíos." },
+  { q: "¿Cuánto tiempo pueden estar los paquetes en casillero?", a: "Los paquetes NO pueden estar más de 3 semanas. (Se aplicará penalización)" },
+  { q: "¿Qué día salen los envíos?", a: "Salimos todas las semanas (Día variado)" },
+  { q: "¿Con cuáles métodos de pago cuentan?", a: "• USDT - BINANCE\n• Zelle\n• $ Panamá\n• $ efectivo (Solo válido en Barcelona)" },
+  { q: "¿Cuáles son los artículos prohibidos?", a: "• Drones\n• Vapes\n• Armas (así sean de juguete)\n• Efectivo\n• Artículos copia\n• Radioactivos\n• Alimentos perecederos\n• Animales\n• Máquinas de minar" },
+];
+
+const usaVenezuelaFaqs = [
+  { q: "¿Viaja asegurada la caja desde mi ciudad hasta que sale a Venezuela?", a: "Sí, en el presupuesto que se le da va incluido todo." },
+  { q: "¿Debo pagar algo al entregar la caja en el UPS STORE?", a: "No, no debe pagar nada al momento de la entrega de su caja, se paga es al salir el envío." },
+];
+
+const chinaAgentFaqs = [
+  { q: "¿Cómo sé que la fábrica en China es real y confiable?", a: "Antes de avanzar, verificamos la fábrica, su historial y su capacidad real de producción. No trabajamos con proveedores dudosos ni improvisados." },
+  { q: "¿Qué pasa si la mercancía no es lo que pedí?", a: "Realizamos inspecciones antes del envío para confirmar cantidad, calidad y especificaciones. Si algo no está correcto, se detecta a tiempo." },
+  { q: "¿Es seguro enviar dinero a proveedores en China?", a: "Sí, siempre que se haga correctamente. Nosotros gestionamos los pagos de forma segura y controlada, reduciendo riesgos de fraude o errores bancarios." },
+  { q: "¿Y si es mi primera importación y no sé por dónde empezar?", a: "No necesitas saberlo todo. Te guiamos paso a paso y nos encargamos del proceso completo para que importes con claridad y sin estrés." },
+  { q: "¿Puedo perder mi dinero en una importación?", a: "El riesgo existe cuando se importa sin experiencia ni respaldo. Nuestro trabajo es minimizar esos riesgos con procesos claros, verificación y control en cada etapa." },
+  { q: "¿Por qué no hacerlo solo para ahorrar dinero?", a: "Muchos clientes llegan a nosotros después de perder dinero por hacerlo solos. Un error en China suele salir mucho más caro que hacerlo bien desde el inicio." },
+];
+---
+
+<Layout title="Gestión de importaciones – ON THE WAY LOGISTIC">
+  <Header currentPath="/importaciones" lang="es" />
+  <div class="h-[104px]"></div>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[50vh] md:min-h-[60vh] flex flex-col justify-center overflow-hidden px-4">
+    <div class="absolute inset-0 bg-gradient-to-b from-dark/30 via-dark/60 to-dark z-10"></div>
+    <div class="absolute inset-0 bg-primary-dark/20"></div>
+    <div class="relative z-20 max-w-7xl mx-auto w-full">
+      <h1 class="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl text-white uppercase leading-none mb-2">
+        IMPORTA SIN RIEGOS
+      </h1>
+      <h2 class="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl text-gold uppercase leading-none mb-8">
+        CRECE CON CONFIANZA
+      </h2>
+      <p class="text-gray-light text-base md:text-lg max-w-3xl leading-relaxed">
+        En ON THE WAY LOGISTIC nos encargamos de todo el proceso lógico de importación desde China y Estados Unidos, somos tu mejor aliado: auditoría de fábricas, control de calidad y logística integral. Tú eliges el producto y nosotros garantizamos que llegue.
+      </p>
+    </div>
+  </section>
+
+  <!-- Import CTAs (Black → Blue gradient) -->
+  <section style="background: linear-gradient(180deg, #000000 40%, #0060C0 100%);" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <button class="import-main-btn w-full bg-gold hover:bg-gold-light text-dark font-montserrat font-black text-lg md:text-xl py-5 px-6 rounded-xl border-4 border-gold/80 transition-colors uppercase" data-target="usa-accordion">
+          QUIERO IMPORTAR DESDE ESTADOS UNIDOS
+        </button>
+        <button class="import-main-btn w-full bg-white hover:bg-gray-100 text-gold font-montserrat font-black text-lg md:text-xl py-5 px-6 rounded-xl border-4 border-gold/80 transition-colors uppercase" data-target="china-accordion">
+          QUIERO IMPORTAR DESDE CHINA
+        </button>
+      </div>
+
+      <div id="usa-accordion" class="import-accordion hidden space-y-2 mb-6">
+        {usaOptions.map((opt, i) => (
+          <button
+            class:list={["modal-trigger w-full text-left px-5 py-3 rounded-lg font-montserrat text-base text-dark font-medium hover:opacity-90 transition-opacity", i === 0 ? "bg-rose-300" : "bg-gray-300"]}
+            data-modal={opt.modalId}
+          >{opt.label}</button>
+        ))}
+      </div>
+
+      <div id="china-accordion" class="import-accordion hidden space-y-2 mb-6">
+        {chinaOptions.map((opt, i) => (
+          <button
+            class:list={["modal-trigger w-full text-left px-5 py-3 rounded-lg font-montserrat text-base text-dark font-medium hover:opacity-90 transition-opacity", i === 0 ? "bg-rose-300" : "bg-gray-300"]}
+            data-modal={opt.modalId}
+          >{opt.label}</button>
+        ))}
+      </div>
+
+      <p class="text-center text-gold/50 text-lg tracking-[0.5em] my-4">• • • • • • • • • • • •</p>
+      <p class="text-gold text-center font-montserrat text-base mt-4">
+        Selecciona el formulario que se adapte a tu situación y nosotros hacemos el resto
+      </p>
+    </div>
+  </section>
+
+  <!-- Google Reviews (Blue → Black) -->
+  <section style="background: linear-gradient(180deg, #0060C0 0%, #0060C0 50%, #000 100%);" class="py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" id="reviews-track">
+        {reviews.map((review) => (
+          <div class="flex-shrink-0 w-[260px] snap-start bg-white rounded-xl p-4 shadow-lg">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">{review.name.charAt(0)}</div>
+                <span class="font-montserrat font-medium text-xs text-dark">{review.name}</span>
+              </div>
+              <svg class="w-4 h-4" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="flex gap-0.5 mb-2">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-3 h-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              ))}
+            </div>
+            <p class="text-gray-600 text-[11px] leading-relaxed line-clamp-5">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Carousel -->
+  <section class="py-12 px-4">
+    <div class="max-w-2xl mx-auto relative">
+      <div class="overflow-hidden" id="video-viewport">
+        <div class="flex transition-transform duration-500 ease-in-out" id="video-track">
+          {[
+            "https://onthewaylogistic.com/wp-content/uploads/2025/09/OnthewayTestimonio.mp4",
+            "https://onthewaylogistic.com/wp-content/uploads/2025/09/MELISSA.mp4",
+            "https://onthewaylogistic.com/wp-content/uploads/2025/09/LUIS.mp4",
+            "https://onthewaylogistic.com/wp-content/uploads/2025/09/PEDRO-1-1.mp4",
+          ].map((src) => (
+            <div class="flex-shrink-0 w-full flex justify-center">
+              <video
+                class="aspect-[9/16] max-h-[500px] rounded-2xl bg-dark-surface border border-gray-border"
+                controls
+                preload="metadata"
+              >
+                <source src={src} type="video/mp4" />
+              </video>
+            </div>
+          ))}
+        </div>
+      </div>
+      <button id="video-prev" class="absolute top-1/2 -translate-y-1/2 left-2 md:-left-12 w-10 h-10 rounded-full bg-dark-surface/80 border border-gray-border flex items-center justify-center text-white hover:border-primary transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button id="video-next" class="absolute top-1/2 -translate-y-1/2 right-2 md:-right-12 w-10 h-10 rounded-full bg-dark-surface/80 border border-gray-border flex items-center justify-center text-white hover:border-primary transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <div class="flex justify-center gap-2 mt-4" id="video-dots">
+        <span class="w-2.5 h-2.5 rounded-full bg-white video-dot" data-index="0"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-gray-border video-dot" data-index="1"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-gray-border video-dot" data-index="2"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-gray-border video-dot" data-index="3"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="font-montserrat font-black text-4xl md:text-5xl">
+          <span class="text-white">PREGUNTAS </span><span class="text-gold">FRECUENTES</span>
+        </h2>
+      </div>
+      <div class="space-y-3" id="faq-container">
+        {faqs.map((faq, i) => (
+          <div class="faq-item border border-gold/30 rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between px-6 py-4 text-left bg-dark-surface hover:bg-dark-surface/80 transition-colors" data-index={i}>
+              <span class="font-montserrat text-base font-medium text-white pr-4">{faq.question}</span>
+              <span class="faq-icon text-gold text-xl flex-shrink-0 font-bold">-</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-4 bg-dark-surface">
+              <p class="text-gray-light text-sm leading-relaxed">{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer lang="es" />
+
+  <!-- === ALL MODALS === -->
+
+  <!-- 1. Miami Cotizador -->
+  <ImportModal id="miami-modal" title="Cotizar desde Miami hacia tu ciudad" type="iframe"
+    iframeSrc="https://logistic-quote-wizard.lovable.app/"
+    ctaText="REGÍSTRATE Y COMIENZA A ENVIAR"
+    ctaHref="https://api.whatsapp.com/send?phone=17862822830" />
+
+  <!-- 2. USA Locker -->
+  <ImportModal id="usa-locker-modal" title="Crear Casillero en Estados Unidos" type="locker"
+    description="Regístrate en nuestro sistema y obtén tu dirección en Estados Unidos para recibir todos tus paquetes."
+    ctaText="REGISTRARME AHORA"
+    ctaHref="https://onthewaylogistic.multitrack.trackingpremium.us/pobox/new_public"
+    faqs={usaLockerFaqs} />
+
+  <!-- 3. USA → Venezuela -->
+  <ImportModal id="usa-venezuela-modal" title="Enviar desde cualquier ciudad de USA a Venezuela" type="steps"
+    steps={[
+      "Debe medir y pesar cada una de las cajas que desea enviar",
+      "Va a entregar las cajas en el UPS Store más cercano que tenga",
+      "Llenar el formulario con la información requerida",
+      "Recibirá su cotización de envío y nos dejará saber por el mismo medio la aprobación",
+      "Le enviaremos la etiqueta o etiquetas que le colocará a las cajas correspondientes",
+      "Esperar sus cajas y hacer seguimiento con el tracking suministrado",
+    ]}
+    infoFields={[
+      "Dirección desde donde envían",
+      "Dirección a donde envían",
+      "Quien envía - Número de teléfono",
+      "Quien recibe - Número de teléfono",
+      "Correo de quien envía",
+      "Medidas de la caja + Peso de la caja",
+    ]}
+    ctaText="Solicitar Cotización por WhatsApp"
+    ctaHref="https://api.whatsapp.com/send?phone=17862822830"
+    faqs={usaVenezuelaFaqs} />
+
+  <!-- 4. USA Agent -->
+  <ImportModal id="usa-agent-modal" title="Agente de Compras USA" type="agent"
+    agentIntro="Elabora tu lista de compras lo más clara y específica posible, donde incluyas: rubro o nombre de los productos, características, cantidades, tallas (en caso de ser ropa o zapatos), fotos referenciales, y monto del presupuesto disponible."
+    agentList={[
+      "Visitar la tienda de su preferencia",
+      "Shopping virtual a través de fotos o videos para seleccionar productos",
+      "Reempaque y organización de cajas",
+      "Logística de flete",
+    ]}
+    pricing={[
+      { label: "Compra Online", price: "$50 - $500" },
+      { label: "Montos mayores a $500", price: "12% del monto" },
+      { label: "Tienda física (menor a $700)", price: "$95", note: "*Tiempo de compras: 4 horas" },
+      { label: "Tienda física ($700 en adelante)", price: "20% del monto", note: "*Tiempo de compras: 4 horas" },
+      { label: "Entregas a otro casillero o Courier", price: "Doral: $25 / Otras áreas: consultar" },
+    ]}
+    termsPreview="Al realizar una compra con ON THE WAY, acepta los siguientes términos: En el caso de que el cliente no haya enviado un monto suficiente, se aplicará un cargo adicional del 20% del monto prestado. Los envíos se realizan los viernes de cada semana (aéreo). Cada compra requiere 1 a 4 días hábiles de procesamiento."
+    ctaText="📱 AGENDA TU DÍA"
+    ctaHref="https://api.whatsapp.com/send?phone=17862822830" />
+
+  <!-- 5. Guangzhou Cotizador -->
+  <ImportModal id="guangzhou-modal" title="Cotizar desde Guangzhou hacia tu ciudad" type="iframe"
+    iframeSrc="https://onway-cotiza-express.lovable.app/"
+    ctaText="REGÍSTRATE Y COMIENZA A ENVIAR"
+    ctaHref="https://api.whatsapp.com/send?phone=17862822830" />
+
+  <!-- 6. China Locker -->
+  <ImportModal id="china-locker-modal" title="Crear Casillero en China" type="locker"
+    description="Regístrate en nuestro sistema y obtén tu dirección en China para recibir todos tus paquetes."
+    ctaText="REGISTRARME AHORA"
+    ctaHref="https://onthewaylogistic.multitrack.trackingpremium.us/pobox/new_public"
+    faqs={chinaLockerFaqs} />
+
+  <!-- 7. China Agent -->
+  <ImportModal id="china-agent-modal" title="Agente de Logística en China" type="agent"
+    agentIntro="Somos tu socio estratégico: Verificamos la fábrica de tu interés, hacemos inspección de tu mercancía, gestionamos los pagos a tus proveedores, consolidación y re empaque de carga, logística integral."
+    advantages={[
+      "Seguridad desde el origen: Verificamos fábricas e inspeccionamos tu mercancía antes del envío",
+      "Menos costos, más eficiencia: Consolidamos y re-empacamos tu carga para optimizar gastos",
+      "Pagos internacionales seguros: Gestionamos pagos a proveedores de forma confiable",
+      "Logística integral: Un solo aliado para todo el proceso, de origen a destino",
+      "Más foco en tu negocio: Nos encargamos de la logística mientras tú te enfocas en crecer",
+    ]}
+    pricing={[
+      { label: "Inversión menor a $3,000", price: "$298" },
+      { label: "Inversión mayor a $3,000", price: "16% + $298", note: "*Los $298 iniciales se descuentan del total" },
+    ]}
+    ctaText="📱 CONTÁCTANOS POR WHATSAPP"
+    ctaHref="https://api.whatsapp.com/send?phone=17862822830"
+    faqs={chinaAgentFaqs} />
+</Layout>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<script>
+  // Accordion toggle
+  document.querySelectorAll(".import-main-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.getAttribute("data-target");
+      const panel = document.getElementById(target!);
+      document.querySelectorAll(".import-accordion").forEach((p) => {
+        if (p.id !== target) p.classList.add("hidden");
+      });
+      panel?.classList.toggle("hidden");
+    });
+  });
+
+  // Modal open
+  document.querySelectorAll(".modal-trigger").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const modalId = btn.getAttribute("data-modal");
+      const modal = document.getElementById(modalId!);
+      if (modal) { modal.classList.remove("hidden"); modal.classList.add("flex"); }
+    });
+  });
+
+  // Modal close
+  document.querySelectorAll(".modal-close").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const modal = btn.closest(".modal-overlay");
+      if (modal) { modal.classList.add("hidden"); modal.classList.remove("flex"); }
+    });
+  });
+
+  // Close modal on overlay click
+  document.querySelectorAll(".modal-overlay").forEach((modal) => {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) { modal.classList.add("hidden"); modal.classList.remove("flex"); }
+    });
+  });
+
+  // Modal FAQ toggle
+  document.querySelectorAll(".modal-faq-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".modal-faq-item");
+      const answer = item?.querySelector(".modal-faq-answer");
+      const icon = item?.querySelector(".modal-faq-icon");
+      answer?.classList.toggle("hidden");
+      if (icon) icon.textContent = answer?.classList.contains("hidden") ? "+" : "-";
+    });
+  });
+
+  // Video carousel
+  let videoIdx = 0;
+  const videoTrack = document.getElementById("video-track");
+  const videoDots = document.querySelectorAll(".video-dot");
+  function goToVideo(idx: number) {
+    videoIdx = idx;
+    if (videoTrack) videoTrack.style.transform = `translateX(-${idx * 100}%)`;
+    videoDots.forEach((d, i) => {
+      (d as HTMLElement).className = `w-2.5 h-2.5 rounded-full video-dot ${i === idx ? "bg-white" : "bg-gray-border"}`;
+    });
+  }
+  document.getElementById("video-prev")?.addEventListener("click", () => goToVideo(Math.max(0, videoIdx - 1)));
+  document.getElementById("video-next")?.addEventListener("click", () => goToVideo(Math.min(3, videoIdx + 1)));
+  videoDots.forEach(d => d.addEventListener("click", () => goToVideo(parseInt((d as HTMLElement).dataset.index || "0"))));
+
+  // Page FAQ toggle
+  document.querySelectorAll(".faq-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".faq-item");
+      const answer = item?.querySelector(".faq-answer");
+      const icon = item?.querySelector(".faq-icon");
+      answer?.classList.toggle("hidden");
+      if (icon) icon.textContent = answer?.classList.contains("hidden") ? "-" : "+";
+    });
+  });
+</script>

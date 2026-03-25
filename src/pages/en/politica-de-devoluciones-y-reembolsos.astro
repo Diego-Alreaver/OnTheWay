@@ -1,0 +1,141 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { getLocalizedPath } from "../../i18n/translations";
+
+const lang = "en";
+---
+
+<Layout title="Return and Refund Policy - ON THE WAY LOGISTIC">
+  <Header currentPath="/politica-de-devoluciones-y-reembolsos" lang={lang} />
+
+  <!-- Spacer for fixed header -->
+  <div class="h-[104px] lg:h-[104px]"></div>
+
+  <main class="py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Back Button -->
+      <a href={getLocalizedPath("/soporte", lang)} class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-montserrat text-sm font-medium bg-dark-surface border border-gray-border rounded-full px-5 py-2 mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Support
+      </a>
+
+      <!-- Title -->
+      <h1 class="font-montserrat font-bold text-3xl md:text-4xl text-primary mb-2">
+        Return and Refund Policy
+      </h1>
+      <p class="text-gray-medium text-sm mb-10">ON THE WAY LOGISTIC INC</p>
+
+      <!-- Content -->
+      <div class="space-y-10">
+
+        <!-- Section 1 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            1. Scope
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            ON THE WAY LOGISTIC INC acts as an international logistics intermediary. We are not manufacturers or direct sellers of the products we transport. Our service is limited to logistics management, import advisory, and international shipping coordination.
+          </p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            2. Returns
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            Returns are only accepted when the error is directly attributable to ON THE WAY LOGISTIC INC (for example, wrong product shipped or damage during handling at our warehouse). Factory defects or product quality issues are the sole responsibility of the manufacturer or supplier.
+          </p>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            3. Refunds
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            Refunds are issued as credit for future services with ON THE WAY LOGISTIC INC. Monetary refunds are only made when the error is 100% attributable to the company and will be evaluated on a case-by-case basis.
+          </p>
+        </section>
+
+        <!-- Section 4 - Important Note -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            4. Important Notice
+          </h2>
+          <div class="bg-dark-surface border border-gold/30 rounded-xl p-6">
+            <p class="text-gray-light text-sm leading-relaxed">
+              ON THE WAY LOGISTIC INC is <span class="text-gold font-semibold">not responsible</span> for:
+            </p>
+            <ul class="mt-4 space-y-2 text-gray-light text-sm leading-relaxed">
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-0.5">&#8226;</span>
+                Transit delays by shipping or airline carriers
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-0.5">&#8226;</span>
+                Customs retentions
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-0.5">&#8226;</span>
+                Taxes or tariffs applied by destination country authorities
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-0.5">&#8226;</span>
+                Merchandise confiscations
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-gold mt-0.5">&#8226;</span>
+                Natural disasters or force majeure events
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            5. Claims
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed mb-4">
+            All claims must be submitted in writing to <a href="mailto:support@onthewaylogistic.com" class="text-primary hover:underline">support@onthewaylogistic.com</a> within <span class="text-white font-semibold">5 business days</span> of receiving the merchandise.
+          </p>
+          <p class="text-gray-light text-sm leading-relaxed mb-4">
+            The claim must include:
+          </p>
+          <ul class="space-y-2 text-gray-light text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Order number
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Corresponding invoices
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary mt-0.5">&#8226;</span>
+              Photographic or documentary evidence of the issue
+            </li>
+          </ul>
+        </section>
+
+        <!-- Contact -->
+        <section class="bg-dark-surface border border-gray-border rounded-2xl p-8 text-center">
+          <h2 class="font-montserrat font-bold text-lg text-primary mb-2">Contact</h2>
+          <p class="text-gray-light text-sm mb-4">For claims or return inquiries:</p>
+          <a href="mailto:support@onthewaylogistic.com" class="text-primary hover:underline text-sm font-montserrat font-medium">
+            support@onthewaylogistic.com
+          </a>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

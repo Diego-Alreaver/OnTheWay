@@ -1,0 +1,82 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { getLocalizedPath } from "../../i18n/translations";
+
+const lang = "en";
+---
+
+<Layout title="Legal Notice - ON THE WAY LOGISTIC">
+  <Header currentPath="/aviso-legal" lang={lang} />
+
+  <!-- Spacer for fixed header -->
+  <div class="h-[104px] lg:h-[104px]"></div>
+
+  <main class="py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Back Button -->
+      <a href={getLocalizedPath("/soporte", lang)} class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-montserrat text-sm font-medium bg-dark-surface border border-gray-border rounded-full px-5 py-2 mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Support
+      </a>
+
+      <!-- Title -->
+      <h1 class="font-montserrat font-bold text-3xl md:text-4xl text-primary mb-2">
+        Legal Notice
+      </h1>
+      <p class="text-gray-medium text-sm mb-10">ON THE WAY LOGISTIC INC</p>
+
+      <!-- Content -->
+      <div class="space-y-10">
+
+        <!-- Jurisdiction -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            Jurisdiction and Applicable Law
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            ON THE WAY LOGISTIC INC operates under the laws of the United States of America, headquartered in <span class="text-white font-semibold">Miami, Florida</span>. All operations, contracts, and services are subject to applicable federal and state legislation.
+          </p>
+        </section>
+
+        <!-- Dispute Resolution -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            Dispute Resolution
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            Any controversy, dispute, or claim arising from or related to the services provided by ON THE WAY LOGISTIC INC shall be resolved under the law of the State of Florida and the jurisdiction of its competent courts.
+          </p>
+        </section>
+
+        <!-- Liability -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            Limitation of Liability
+          </h2>
+          <div class="bg-dark-surface border border-gold/30 rounded-xl p-6">
+            <p class="text-gray-light text-sm leading-relaxed">
+              The total liability of ON THE WAY LOGISTIC INC shall not, under any circumstances, exceed the amount of <span class="text-gold font-semibold">fees paid by the client</span> for the service in question. This limitation applies to any type of damage, whether direct, indirect, incidental, or consequential.
+            </p>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="bg-dark-surface border border-gray-border rounded-2xl p-8 text-center">
+          <h2 class="font-montserrat font-bold text-lg text-primary mb-2">Contact</h2>
+          <p class="text-gray-light text-sm mb-4">For legal inquiries:</p>
+          <a href="mailto:info@onthewaylogistic.com" class="text-primary hover:underline text-sm font-montserrat font-medium">
+            info@onthewaylogistic.com
+          </a>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

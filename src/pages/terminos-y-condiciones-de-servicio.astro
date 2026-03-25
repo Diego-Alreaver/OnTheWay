@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getLocalizedPath } from "../i18n/translations";
+
+const lang = "es";
+---
+
+<Layout title="Terminos y Condiciones de Servicio - ON THE WAY LOGISTIC">
+  <Header currentPath="/terminos-y-condiciones-de-servicio" lang={lang} />
+
+  <!-- Spacer for fixed header -->
+  <div class="h-[104px] lg:h-[104px]"></div>
+
+  <main class="py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Back Button -->
+      <a href={getLocalizedPath("/soporte", lang)} class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-montserrat text-sm font-medium bg-dark-surface border border-gray-border rounded-full px-5 py-2 mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Volver a Soporte
+      </a>
+
+      <!-- Title -->
+      <h1 class="font-montserrat font-bold text-3xl md:text-4xl text-primary mb-2">
+        Terminos y Condiciones de Servicio
+      </h1>
+      <p class="text-gray-medium text-sm mb-10">ON THE WAY LOGISTIC INC</p>
+
+      <!-- Content -->
+      <div class="space-y-10">
+
+        <!-- Section 1 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            1. Naturaleza del Servicio
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            ON THE WAY LOGISTIC INC ofrece servicios de logistica, importacion, exportacion y asesoria comercial internacional. Actuamos como broker y operador logistico, facilitando la conexion entre proveedores internacionales y nuestros clientes.
+          </p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            2. Responsabilidad Limitada
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed mb-4">
+            ON THE WAY LOGISTIC INC <span class="text-gold font-semibold">no se hace responsable</span> por:
+          </p>
+          <ul class="space-y-2 text-gray-light text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="text-gold mt-0.5">&#8226;</span>
+              Perdida, dano o retraso causado por aduanas, gobiernos, transportistas, huelgas, fenomenos naturales o fuerza mayor
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-gold mt-0.5">&#8226;</span>
+              Calidad de los productos adquiridos a proveedores internacionales
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-gold mt-0.5">&#8226;</span>
+              Impuestos y aranceles aplicados por las autoridades del pais de destino
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            3. Pagos
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            Los pagos deben realizarse en los plazos acordados. Los precios estan sujetos a cambios sin previo aviso. Los servicios no cancelados antes de su ejecucion no son reembolsables.
+          </p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            4. Uso del Sitio Web
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            El contenido de este sitio web es de caracter informativo y no constituye una oferta vinculante hasta que se realice una confirmacion formal por parte de ON THE WAY LOGISTIC INC. Queda prohibido el uso del sitio web para actividades fraudulentas o ilegales.
+          </p>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            5. Modificaciones
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            ON THE WAY LOGISTIC INC se reserva el derecho de actualizar estas politicas en cualquier momento. Las modificaciones entraran en vigor a partir de su publicacion en este sitio web. Recomendamos revisar periodicamente esta pagina.
+          </p>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="border-b border-gray-border pb-8">
+          <h2 class="font-montserrat font-bold text-xl text-gold mb-4">
+            6. Aviso Legal
+          </h2>
+          <p class="text-gray-light text-sm leading-relaxed">
+            ON THE WAY LOGISTIC INC opera bajo las leyes de los Estados Unidos de America, con sede en Miami, Florida. Cualquier disputa sera resuelta bajo la jurisdiccion de los tribunales del estado de Florida. La responsabilidad total de la empresa no excedera el monto de las tarifas pagadas por el servicio en cuestion.
+          </p>
+        </section>
+
+        <!-- Contact -->
+        <section class="bg-dark-surface border border-gray-border rounded-2xl p-8 text-center">
+          <h2 class="font-montserrat font-bold text-lg text-primary mb-2">Contacto</h2>
+          <p class="text-gray-light text-sm mb-4">Si tienes preguntas sobre nuestros terminos de servicio:</p>
+          <a href="mailto:info@onthewaylogistic.com" class="text-primary hover:underline text-sm font-montserrat font-medium">
+            info@onthewaylogistic.com
+          </a>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>
