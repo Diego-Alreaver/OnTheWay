@@ -81,21 +81,26 @@ const chinaAgentFaqs = [
 
 <Layout title="Import Management – ON THE WAY LOGISTIC">
   <Header currentPath="/importaciones" lang={lang} />
-  <div class="h-[104px]"></div>
+  <div class="h-[56px] lg:h-[160px]"></div>
 
-  <!-- Hero -->
-  <section class="relative min-h-[50vh] md:min-h-[60vh] flex flex-col justify-center overflow-hidden px-4">
-    <div class="absolute inset-0 bg-gradient-to-b from-dark/30 via-dark/60 to-dark z-10"></div>
-    <div class="absolute inset-0 bg-primary-dark/20"></div>
-    <div class="relative z-20 max-w-7xl mx-auto w-full">
-      <h1 class="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl text-white uppercase leading-none mb-2">{tr.importHero1}</h1>
-      <h2 class="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl text-gold uppercase leading-none mb-8">{tr.importHero2}</h2>
-      <p class="text-gray-light text-base md:text-lg max-w-3xl leading-relaxed">{tr.importText}</p>
+  <!-- Hero (black → blue gradient) -->
+  <section class="relative overflow-hidden px-4" style="background: linear-gradient(180deg, #000 20%, #0060C0 100%);">
+    <div class="max-w-7xl mx-auto w-full text-center pt-6 md:pt-10 pb-2">
+      <h1 class="animate-on-scroll font-montserrat font-black text-5xl md:text-7xl lg:text-[84px] text-white uppercase leading-none mb-1">{tr.importHero1}</h1>
+      <h2 class="animate-on-scroll stagger-1 font-montserrat font-black text-5xl md:text-7xl lg:text-[84px] text-[#D3A931] uppercase leading-none mb-4">{tr.importHero2}</h2>
+      <p class="animate-on-scroll stagger-2 text-gray-light text-[1.1rem] md:text-[1.44rem] max-w-4xl mx-auto leading-relaxed">{tr.importText}</p>
+    </div>
+    <div class="animate-on-scroll stagger-3 max-w-5xl mx-auto -mt-2 md:-mt-4">
+      <img
+        src="https://onthewaylogistic.com/wp-content/uploads/2025/09/Recurso-2@2x-scaled.png"
+        alt="ON THE WAY Logistic Truck"
+        class="w-full h-auto object-contain"
+      />
     </div>
   </section>
 
   <!-- CTAs -->
-  <section style="background: linear-gradient(180deg, #000000 40%, #0060C0 100%);" class="py-20 px-4">
+  <section style="background: linear-gradient(180deg, #0060C0 0%, #000 100%);" class="py-20 px-4">
     <div class="max-w-4xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <button class="import-main-btn w-full bg-gold hover:bg-gold-light text-dark font-montserrat font-black text-lg md:text-xl py-5 px-6 rounded-xl border-4 border-gold/80 transition-colors uppercase" data-target="usa-accordion">{tr.importUSA}</button>

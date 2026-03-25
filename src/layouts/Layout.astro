@@ -13,7 +13,7 @@ const { title, description = "ON THE WAY LOGISTIC - Tu aliado estratégico en lo
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/webp" href="https://onthewaylogistic.com/wp-content/uploads/2025/08/9F8A6275-FE25-444F-B0A2-453B6EED72E2.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,5 +26,16 @@ const { title, description = "ON THE WAY LOGISTIC - Tu aliado estratégico en lo
   </head>
   <body class="min-h-screen bg-dark text-white">
     <slot />
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
   </body>
 </html>
